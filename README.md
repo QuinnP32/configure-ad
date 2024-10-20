@@ -5,11 +5,6 @@
 <h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
-
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -31,18 +26,19 @@ These steps provide a roadmap for deploying Active Directory within Azure Virtua
 4.  <a href="#section4">**Join Client Machine to Domain, Configure Remote Desktop**</a>
 5. ‍‍ <a href="#section5">(Optional) **Create Additional Users with Script**</a>  
 
-## Detailed Deployment and Configuration Steps 
+<h2>Detailed Deployment and Configuration Steps</h2>
 
 Here's a breakdown of each step involved in the deployment process:
 
 <section id="section1">
-### Step 1: Install Active Directory Domain Services 
+<h3>Step 1: Install Active Directory Domain Services</h3>
 
 1. Access your Azure VM (DC-1) using Remote Desktop.
 2. Open Server Manager and install the **Active Directory Domain Services** role.
 </section>
 <section id="section2">
-### Step 2: Promote Server to Domain Controller 
+<h3>Step 2: Promote Server to Domain Controller</h3>
+
 
 1. Within Server Manager, select **Promote this server to domain controller**.
 2. Choose **Add a new forest** and enter your desired domain name (e.g., `mydomain.com`).
@@ -50,8 +46,9 @@ Here's a breakdown of each step involved in the deployment process:
 4. Review the configuration summary and click **Next** to proceed.
 5. The server will restart. Log back in using the newly created domain name (e.g., `mydomain.com\labuser`).
 </section>
+<section id="section3">
+<h3>Step 3: Create Domain Admin User and OUs</h3>
 
-### Step 3: Create Domain Admin User and OUs  & ️
 
 1. Launch **Active Directory Users and Computers (ADUC)**.
 2. Create two Organizational Units (OUs):
@@ -60,9 +57,9 @@ Here's a breakdown of each step involved in the deployment process:
 3. Create a new user named "Jane Doe" with the username `jane_admin` and a strong password (replace `Cyberlab123!` with a strong password).
 4. Add "jane_admin" to the **Domain Admins** security group.
 5. Log out and log back in as `mydomain.com\jane_admin`.
-
-
-### Step 4: Join Client Machine to Domain, Configure Remote Desktop  & 
+</section
+<section id="section4">
+<h3>Step 4: Join Client Machine to Domain, Configure Remote Desktop</h3>
 
 1. Log in to Client-1 with the local administrator account (e.g., `labuser`).
 2. Join Client-1 to the domain named `mydomain.com` (replace with your chosen name).
@@ -71,10 +68,10 @@ Here's a breakdown of each step involved in the deployment process:
 5. Log in to the Domain Controller as `mydomain.com\jane_admin`.
 6. Open System Properties on the Domain Controller.
 7. Go to the **Remote Desktop** tab and allow **Domain Users** access.
-
-
+</section>
+<section id="section5">
 ### Step 5: Create Additional Users with Script (Optional) ‍‍
-
+</section>
 1. On the Domain Controller, open PowerShell ISE as an administrator.
 2. Create a new file and paste the following script content (replace placeholders with your desired values):
 
